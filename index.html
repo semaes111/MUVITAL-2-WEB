@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MÜV Vital | Club privado de salud y rendimiento</title>
+<meta name="description" content="MÜV Vital integra entrenamiento personalizado, medicina, fisioterapia, nutrición y podología en un club privado de salud y rendimiento en Roquetas de Mar.">
+<meta name="theme-color" content="#183A40">
+<meta name="color-scheme" content="light dark">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon-180.png">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #214C53; color: #214C53; font-family: "Source Sans 3", sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+    ::selection { background: rgba(46, 136, 141, 0.28); color: #183A40; }
+    a { color: #2E888D; }
+    a:hover { color: #236A6F; }
+    input, select, textarea, button { font-family: "Source Sans 3", sans-serif; }
+    select option { background: #183A40; color: #EDE9DF; }
+    [data-hscroll] { scrollbar-width: none; }
+    [data-hscroll]::-webkit-scrollbar { display: none; }
+    @keyframes muv-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes muv-scan { 0% { top: -40%; } 100% { top: 100%; } }
+    @keyframes muv-scanline { 0% { top: -5%; } 100% { top: 105%; } }
+    @keyframes muv-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes muv-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes muv-clip { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0% 0 0); } }
+    @keyframes muv-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes muv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes muv-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    @keyframes muv-drift-a { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(6vw,4vh,0) scale(1.15); } }
+    @keyframes muv-drift-b { from { transform: translate3d(0,0,0) scale(1.1); } to { transform: translate3d(-5vw,-5vh,0) scale(0.95); } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background:#214C53;">
+
+  <!-- ══════════ NAV ══════════ -->
+  <header data-screen-label="Nav" style="position:fixed;top:0;left:0;right:0;z-index:50;">
+    <div style="position:absolute;inset:0;background:rgba(24,58,64,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,212,200,0.10);opacity:{{ navBgOpacity }};transition:opacity 0.3s ease;"></div>
+    <nav style="position:relative;max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px;">
+      <a href="#inicio" aria-label="MÜV Vital — inicio" style="display:flex;align-items:center;">
+        <img src="images/logo-muv-blanco.png" alt="MÜV Vital" width="553" height="306" decoding="async" style="height:42px;width:auto;display:block;animation:muv-rise 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both;">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:32px;">
+          <a href="#metodo" style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,212,200,0.82);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">El método</a>
+          <a href="#pilares" style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,212,200,0.82);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Pilares</a>
+          <a href="#unidades" style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,212,200,0.82);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Unidades</a>
+          <a href="#espacio" style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,212,200,0.82);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">El espacio</a>
+          <a href="#equipo" style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,212,200,0.82);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Equipo</a>
+        </div>
+        <a href="#acceso" style="display:inline-flex;align-items:center;background:#2E888D;color:#FFFFFF;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:12px 22px;border-radius:9999px;text-decoration:none;transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="color:#FFFFFF;transform:translateY(-2px);box-shadow:0 8px 24px rgba(16,42,47,0.4);" style-active="transform:scale(0.98);">Solicitar evaluación</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ abrirMenu }}" aria-label="Abrir menú" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:transparent;border:none;color:#EDE9DF;cursor:pointer;padding:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+      </sc-if>
+    </nav>
+  </header>
+
+  <!-- Menú móvil -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Menú móvil" style="position:fixed;inset:0;z-index:70;background:#183A40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;">
+      <button onClick="{{ cerrarMenu }}" aria-label="Cerrar menú" style="position:absolute;top:16px;right:clamp(20px,4vw,64px);display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:transparent;border:none;color:#EDE9DF;cursor:pointer;padding:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <img src="images/logo-muv-blanco.png" alt="MÜV Vital" width="553" height="306" decoding="async" style="height:52px;width:auto;margin-bottom:12px;">
+      <a href="#metodo" onClick="{{ cerrarMenu }}" style="font-family:'Playfair Display',serif;font-size:30px;color:#EDE9DF;text-decoration:none;">El método</a>
+      <a href="#pilares" onClick="{{ cerrarMenu }}" style="font-family:'Playfair Display',serif;font-size:30px;color:#EDE9DF;text-decoration:none;">Pilares</a>
+      <a href="#unidades" onClick="{{ cerrarMenu }}" style="font-family:'Playfair Display',serif;font-size:30px;color:#EDE9DF;text-decoration:none;">Unidades</a>
+      <a href="#espacio" onClick="{{ cerrarMenu }}" style="font-family:'Playfair Display',serif;font-size:30px;color:#EDE9DF;text-decoration:none;">El espacio</a>
+      <a href="#equipo" onClick="{{ cerrarMenu }}" style="font-family:'Playfair Display',serif;font-size:30px;color:#EDE9DF;text-decoration:none;">Equipo</a>
+      <a href="#acceso" onClick="{{ cerrarMenu }}" style="margin-top:14px;display:inline-flex;align-items:center;background:#2E888D;color:#FFFFFF;font-size:13px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:14px 28px;border-radius:9999px;text-decoration:none;">Solicitar evaluación</a>
+    </div>
+  </sc-if>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="inicio" data-screen-label="Hero" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(135deg,#214C53,#183A40);">
+    <img src="images/soporte-frontal.webp" srcset="images/soporte-frontal-mobile.webp 959w, images/soporte-frontal.webp 1672w" sizes="100vw" alt="Entrenamiento personal en MÜV Vital" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(24,58,64,0.94) 0%,rgba(24,58,64,0.62) 42%,rgba(33,76,83,0.28) 100%);"></div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;mix-blend-mode:screen;">
+        <div style="position:absolute;top:-15%;left:-10%;width:60vw;height:60vw;max-width:880px;max-height:880px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(46,136,141,0.5),transparent 60%);filter:blur(60px);will-change:transform;animation:muv-drift-a 16s ease-in-out infinite alternate;"></div>
+        <div style="position:absolute;bottom:-22%;right:-8%;width:52vw;height:52vw;max-width:780px;max-height:780px;border-radius:50%;background:radial-gradient(circle at 60% 60%,rgba(171,210,207,0.34),transparent 62%);filter:blur(70px);will-change:transform;animation:muv-drift-b 20s ease-in-out infinite alternate;"></div>
+      </div>
+    </sc-if>
+    <div style="position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:140px clamp(20px,4vw,64px) clamp(72px,10vh,120px);">
+      <p style="margin:0 0 22px;font-size:clamp(10px,1.4vw,12px);font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:#ABD2CF;opacity:0;animation:muv-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;">MÜV Vital · Club privado de salud y rendimiento · Roquetas de Mar</p>
+      <h1 style="margin:0 0 24px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2.9rem,1.2rem + 6.5vw,6.2rem);line-height:1.02;letter-spacing:-0.025em;color:#FFFFFF;max-width:14ch;text-wrap:balance;clip-path:inset(0 100% 0 0);animation:muv-clip 1s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;">Movimiento con criterio médico.</h1>
+      <p style="margin:0 0 40px;font-size:clamp(1.1rem,1rem + 0.6vw,1.375rem);line-height:1.55;color:rgba(237,233,223,0.85);max-width:52ch;text-wrap:pretty;opacity:0;animation:muv-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.75s forwards;">Entrenamiento personal, traumatología, fisioterapia, nutrición y podología. Un solo equipo, un solo método, un solo lugar.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;opacity:0;animation:muv-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.95s forwards;">
+        <a href="#acceso" style="display:inline-flex;align-items:center;gap:10px;background:#2E888D;color:#FFFFFF;font-size:15px;font-weight:600;padding:16px 30px;border-radius:9999px;text-decoration:none;transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="color:#FFFFFF;transform:translateY(-2px);box-shadow:0 10px 28px rgba(16,42,47,0.45);" style-active="transform:scale(0.98);">Solicitar una evaluación privada <span aria-hidden="true">→</span></a>
+        <a href="#metodo" style="display:inline-flex;align-items:center;border:1px solid rgba(217,212,200,0.4);color:#EDE9DF;font-size:15px;font-weight:600;padding:15px 28px;border-radius:9999px;text-decoration:none;background:rgba(33,76,83,0.35);transition:border-color 0.2s ease, background 0.2s ease;" style-hover="color:#FFFFFF;border-color:rgba(217,212,200,0.7);background:rgba(33,76,83,0.6);">Conocer el método</a>
+      </div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;width:1px;height:52px;background:rgba(217,212,200,0.25);overflow:hidden;opacity:0;animation:muv-fade 0.8s ease 1.4s forwards;">
+      <div style="position:absolute;left:0;width:100%;height:40%;background:#2E888D;animation:muv-scan 2s linear infinite;"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ MANIFIESTO ══════════ -->
+  <section data-screen-label="Manifiesto" style="background:#D9D4C8;padding:clamp(96px,13vw,160px) 0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(40px,6vw,88px);">
+        <div style="flex:1 1 460px;min-width:min(100%,460px);max-width:900px;">
+          <p data-reveal="0" style="margin:0 0 18px;font-family:'Playfair Display',serif;font-size:clamp(1.8rem,1rem + 3.2vw,3.5rem);line-height:1.15;letter-spacing:-0.01em;color:#214C53;text-wrap:pretty;">No somos un gimnasio con servicios añadidos.</p>
+          <p data-reveal="140" style="margin:0 0 18px;font-family:'Playfair Display',serif;font-size:clamp(1.8rem,1rem + 3.2vw,3.5rem);line-height:1.15;letter-spacing:-0.01em;color:#214C53;text-wrap:pretty;">Somos una unidad de salud con un <em style="font-style:italic;color:#2E888D;">club</em> excepcional.</p>
+          <p data-reveal="280" style="margin:0;font-family:'Playfair Display',serif;font-size:clamp(1.8rem,1rem + 3.2vw,3.5rem);line-height:1.15;letter-spacing:-0.01em;color:#214C53;text-wrap:pretty;">Cinco especialidades. Un método. Tu cuerpo.</p>
+        </div>
+        <div aria-hidden="true" data-reveal="200" style="position:relative;width:clamp(150px,16vw,192px);aspect-ratio:1/1;flex:0 0 auto;">
+          <svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%;animation:muv-spin 28s linear infinite;">
+            <defs>
+              <path id="muv-circ" d="M 100,100 m -86,0 a 86,86 0 1,1 172,0 a 86,86 0 1,1 -172,0"></path>
+            </defs>
+            <text fill="#214C53" opacity="0.7" style="font-family:'Source Sans 3',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;">
+              <textPath href="#muv-circ">Club privado · Salud y rendimiento · Roquetas de Mar ·</textPath>
+            </text>
+          </svg>
+          <img src="images/favicon-180.png" alt="" width="180" height="180" loading="lazy" decoding="async" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56%;height:56%;border-radius:50%;box-shadow:0 16px 36px rgba(33,76,83,0.28);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MÉTODO ══════════ -->
+  <section id="metodo" data-screen-label="Método" style="background:#214C53;padding:clamp(96px,13vw,160px) 0;scroll-margin-top:76px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,72px);margin-bottom:clamp(48px,7vw,72px);">
+        <div data-reveal="0" style="flex:1 1 420px;min-width:min(100%,420px);">
+          <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">El método</p>
+          <h2 style="margin:0 0 24px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.5vw,3.75rem);line-height:1.1;letter-spacing:-0.01em;color:#EDE9DF;max-width:14ch;text-wrap:balance;">Un bucle, no una rutina.</h2>
+          <p style="margin:0;font-size:clamp(1.05rem,1rem + 0.5vw,1.3rem);line-height:1.55;color:rgba(237,233,223,0.72);max-width:60ch;text-wrap:pretty;">Nadie entrena aquí sin evaluación previa. Y ninguna evaluación se queda en un cajón: el plan se recalibra con tus datos, no con sensaciones.</p>
+        </div>
+        <div data-reveal="150" aria-hidden="true" style="flex:0 1 240px;display:flex;justify-content:center;">
+          <div style="position:relative;width:220px;height:220px;">
+          <svg width="220" height="220" viewBox="0 0 240 240" style="display:block;position:absolute;inset:0;">
+            <g style="transform-origin:120px 120px;animation:muv-spin 48s linear infinite;">
+              <circle cx="120" cy="120" r="92" fill="none" stroke="rgba(217,212,200,0.35)" stroke-width="1" stroke-dasharray="3 8"></circle>
+            </g>
+            <circle cx="120" cy="120" r="92" fill="none" stroke="rgba(217,212,200,0.1)" stroke-width="1"></circle>
+            <circle cx="120" cy="28" r="5" fill="#2E888D"></circle>
+            <circle cx="212" cy="120" r="5" fill="#2E888D"></circle>
+            <circle cx="120" cy="212" r="5" fill="#2E888D"></circle>
+            <circle cx="28" cy="120" r="5" fill="#2E888D"></circle>
+            <text x="120" y="14" text-anchor="middle" fill="#ABD2CF" font-size="11" letter-spacing="2" font-family="Source Sans 3, sans-serif">01</text>
+            <text x="232" y="124" text-anchor="middle" fill="#ABD2CF" font-size="11" letter-spacing="2" font-family="Source Sans 3, sans-serif">02</text>
+            <text x="120" y="234" text-anchor="middle" fill="#ABD2CF" font-size="11" letter-spacing="2" font-family="Source Sans 3, sans-serif">03</text>
+            <text x="8" y="124" text-anchor="middle" fill="#ABD2CF" font-size="11" letter-spacing="2" font-family="Source Sans 3, sans-serif">04</text>
+          </svg>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+            <img src="images/favicon-180.png" alt="" width="180" height="180" loading="lazy" decoding="async" style="display:block;width:74px;height:74px;border-radius:50%;box-shadow:0 0 0 8px rgba(217,212,200,0.06), 0 14px 30px rgba(10,26,30,0.4);animation:muv-float 5s ease-in-out infinite;">
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:20px;">
+        <div data-reveal="0" style="border:1px solid rgba(217,212,200,0.12);border-radius:12px;padding:clamp(24px,3vw,32px);background:rgba(46,106,115,0.45);transition:transform 0.25s ease, border-color 0.25s ease;" style-hover="transform:translateY(-3px);border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 12px;font-size:17px;font-weight:600;letter-spacing:0.06em;color:#2E888D;font-variant-numeric:tabular-nums;">01</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;letter-spacing:0.04em;color:#EDE9DF;">EVALÚA</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">Historia clínica, composición corporal, movilidad, fuerza y pisada. 60–90 minutos con el equipo. Sales sabiendo tu punto de partida exacto.</p>
+        </div>
+        <div data-reveal="90" style="border:1px solid rgba(217,212,200,0.12);border-radius:12px;padding:clamp(24px,3vw,32px);background:rgba(46,106,115,0.45);transition:transform 0.25s ease, border-color 0.25s ease;" style-hover="transform:translateY(-3px);border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 12px;font-size:17px;font-weight:600;letter-spacing:0.06em;color:#2E888D;font-variant-numeric:tabular-nums;">02</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;letter-spacing:0.04em;color:#EDE9DF;">PERSONALIZA</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">Tu plan lo firma un equipo completo: médico, fisioterapeuta, nutricionista, podólogo y entrenador deciden juntos qué haces y qué no.</p>
+        </div>
+        <div data-reveal="180" style="border:1px solid rgba(217,212,200,0.12);border-radius:12px;padding:clamp(24px,3vw,32px);background:rgba(46,106,115,0.45);transition:transform 0.25s ease, border-color 0.25s ease;" style-hover="transform:translateY(-3px);border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 12px;font-size:17px;font-weight:600;letter-spacing:0.06em;color:#2E888D;font-variant-numeric:tabular-nums;">03</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;letter-spacing:0.04em;color:#EDE9DF;">EJECUTA</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">Entrenas con supervisión real en un espacio pensado para pocos. Cada sesión queda registrada.</p>
+        </div>
+        <div data-reveal="270" style="border:1px solid rgba(217,212,200,0.12);border-radius:12px;padding:clamp(24px,3vw,32px);background:rgba(46,106,115,0.45);transition:transform 0.25s ease, border-color 0.25s ease;" style-hover="transform:translateY(-3px);border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 12px;font-size:17px;font-weight:600;letter-spacing:0.06em;color:#2E888D;font-variant-numeric:tabular-nums;">04</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;letter-spacing:0.04em;color:#EDE9DF;">MIDE</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">Reevaluación periódica. Lo que mejora se ve en datos; lo que no, se corrige. Y el bucle vuelve a empezar.</p>
+        </div>
+      </div>
+
+      <p data-reveal="0" style="margin:48px 0 0;font-family:'Playfair Display',serif;font-size:20px;color:#6DAFAA;font-style:italic;">El plan no es un papel. Es un circuito.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ PILARES ══════════ -->
+  <section id="pilares" data-screen-label="Pilares" style="background:#183A40;padding:clamp(96px,13vw,160px) 0;scroll-margin-top:76px;content-visibility:auto;contain-intrinsic-size:1px 1000px;position:relative;overflow:hidden;">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:absolute;top:-18%;right:-12%;width:56vw;height:56vw;max-width:820px;max-height:820px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(46,136,141,0.32),transparent 62%);filter:blur(60px);mix-blend-mode:screen;pointer-events:none;will-change:transform;animation:muv-drift-b 22s ease-in-out infinite alternate;"></div>
+    </sc-if>
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);position:relative;">
+      <div data-reveal="0" style="margin-bottom:clamp(48px,7vw,72px);">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">Los pilares</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.5vw,3.75rem);line-height:1.1;letter-spacing:-0.01em;color:#EDE9DF;max-width:14ch;text-wrap:balance;">Cuatro formas de cuidarte.</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px;">
+        <div data-reveal="0" onMouseMove="{{ tiltCard }}" onMouseLeave="{{ tiltReset }}" style="grid-column:1 / -1;background:#2E6A73;border:1px solid rgba(217,212,200,0.12);border-radius:14px;padding:clamp(26px,3.4vw,40px);transition:transform 0.3s ease, border-color 0.25s ease;transform-style:preserve-3d;" style-hover="border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 10px;font-size:14px;font-weight:600;letter-spacing:0.06em;color:#7FC4C9;font-variant-numeric:tabular-nums;">01</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.6rem,1.2rem + 1.4vw,2.1rem);letter-spacing:0.03em;color:#EDE9DF;">RINDE</h3>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.65;color:rgba(237,233,223,0.68);max-width:62ch;text-wrap:pretty;">Fuerza, movilidad y capacidad aeróbica con programación individual, sesión a sesión.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(195,164,60,0.9);background:rgba(217,212,200,0.07);padding:5px 10px;border-radius:6px;">Entrenamiento personalizado</span>
+          </div>
+        </div>
+        <div data-reveal="80" onMouseMove="{{ tiltCard }}" onMouseLeave="{{ tiltReset }}" style="background:#2E6A73;border:1px solid rgba(217,212,200,0.12);border-radius:14px;padding:clamp(26px,3.4vw,40px);transition:transform 0.3s ease, border-color 0.25s ease;transform-style:preserve-3d;" style-hover="border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 10px;font-size:14px;font-weight:600;letter-spacing:0.06em;color:#7FC4C9;font-variant-numeric:tabular-nums;">02</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.5rem,1.2rem + 1vw,1.9rem);letter-spacing:0.03em;color:#EDE9DF;">REPARA</h3>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.65;color:rgba(237,233,223,0.68);text-wrap:pretty;">Diagnóstico, tratamiento y readaptación sin salir del club. Tu lesión deja de ir de consulta en consulta.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(195,164,60,0.9);background:rgba(217,212,200,0.07);padding:5px 10px;border-radius:6px;">Medicina traumatológica</span>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(195,164,60,0.9);background:rgba(217,212,200,0.07);padding:5px 10px;border-radius:6px;">Fisioterapia</span>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(195,164,60,0.9);background:rgba(217,212,200,0.07);padding:5px 10px;border-radius:6px;">Podología</span>
+          </div>
+        </div>
+        <div data-reveal="160" onMouseMove="{{ tiltCard }}" onMouseLeave="{{ tiltReset }}" style="background:#2E6A73;border:1px solid rgba(217,212,200,0.12);border-radius:14px;padding:clamp(26px,3.4vw,40px);transition:transform 0.3s ease, border-color 0.25s ease;transform-style:preserve-3d;" style-hover="border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 10px;font-size:14px;font-weight:600;letter-spacing:0.06em;color:#7FC4C9;font-variant-numeric:tabular-nums;">03</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.5rem,1.2rem + 1vw,1.9rem);letter-spacing:0.03em;color:#EDE9DF;">NUTRE</h3>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.65;color:rgba(237,233,223,0.68);text-wrap:pretty;">Composición corporal y energía con un plan que puedes sostener. Comer bien no es un castigo.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(195,164,60,0.9);background:rgba(217,212,200,0.07);padding:5px 10px;border-radius:6px;">Nutrición</span>
+          </div>
+        </div>
+        <div data-reveal="240" onMouseMove="{{ tiltCard }}" onMouseLeave="{{ tiltReset }}" style="background:#2E6A73;border:1px solid rgba(217,212,200,0.12);border-radius:14px;padding:clamp(26px,3.4vw,40px);transition:transform 0.3s ease, border-color 0.25s ease;transform-style:preserve-3d;" style-hover="border-color:rgba(217,212,200,0.26);">
+          <p style="margin:0 0 10px;font-size:14px;font-weight:600;letter-spacing:0.06em;color:#7FC4C9;font-variant-numeric:tabular-nums;">04</p>
+          <h3 style="margin:0 0 12px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.5rem,1.2rem + 1vw,1.9rem);letter-spacing:0.03em;color:#EDE9DF;">PERTENECE</h3>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.65;color:rgba(237,233,223,0.68);text-wrap:pretty;">Un entorno curado: aforo cuidado, trato por tu nombre y gente que viene a lo mismo que tú.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(195,164,60,0.9);background:rgba(217,212,200,0.07);padding:5px 10px;border-radius:6px;">Club y comunidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ UNIDADES ══════════ -->
+  <section id="unidades" data-screen-label="Unidades" style="background:#D9D4C8;padding:clamp(96px,13vw,160px) 0;scroll-margin-top:76px;content-visibility:auto;contain-intrinsic-size:1px 1400px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div data-reveal="0" style="margin-bottom:clamp(48px,7vw,72px);">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#A8862F;">Las unidades</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.5vw,3.75rem);line-height:1.1;letter-spacing:-0.01em;color:#214C53;max-width:16ch;text-wrap:balance;">Cinco especialidades. Un solo método.</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;">
+        <div data-reveal="0" onMouseMove="{{ glareMove }}" onMouseLeave="{{ glareLeave }}" style="position:relative;display:flex;flex-direction:column;background:#183A40;border-radius:16px;overflow:hidden;transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 40px rgba(24,58,64,0.28);">
+          <div data-glare="true" aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background:radial-gradient(420px circle at 50% 50%,rgba(255,255,255,0.12),transparent 65%);"></div>
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden;">
+            <img src="images/entrenamiento.webp" srcset="images/entrenamiento-mobile.webp 959w, images/entrenamiento.webp 1672w" sizes="(min-width: 1024px) 380px, 90vw" alt="Entrenamiento personalizado" width="1672" height="941" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,43,0.85),rgba(16,38,43,0.15) 55%,transparent);"></div>
+            <span style="position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:#2E888D;padding:5px 9px;border-radius:6px;">Rinde</span>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1;padding:24px;">
+            <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;color:#C3A43C;font-variant-numeric:tabular-nums;">01</p>
+            <h3 style="margin:0 0 10px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;line-height:1.2;color:#EDE9DF;">Entrenamiento personalizado</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(237,233,223,0.62);text-wrap:pretty;">Programas individuales de fuerza, movilidad y capacidad aeróbica, diseñados a partir de tu evaluación y supervisados en sala por tu entrenador. Tu programación cambia cuando tus datos cambian.</p>
+          </div>
+        </div>
+        <div data-reveal="70" onMouseMove="{{ glareMove }}" onMouseLeave="{{ glareLeave }}" style="position:relative;display:flex;flex-direction:column;background:#183A40;border-radius:16px;overflow:hidden;transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 40px rgba(24,58,64,0.28);">
+          <div data-glare="true" aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background:radial-gradient(420px circle at 50% 50%,rgba(255,255,255,0.12),transparent 65%);"></div>
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden;">
+            <img src="images/evaluacion.webp" srcset="images/evaluacion-mobile.webp 959w, images/evaluacion.webp 1672w" sizes="(min-width: 1024px) 380px, 90vw" alt="Medicina traumatológica" width="1672" height="941" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,43,0.85),rgba(16,38,43,0.15) 55%,transparent);"></div>
+            <span style="position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#ABD2CF;background:rgba(171,210,207,0.22);padding:5px 9px;border-radius:6px;">Repara</span>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1;padding:24px;">
+            <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;color:#C3A43C;font-variant-numeric:tabular-nums;">02</p>
+            <h3 style="margin:0 0 10px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;line-height:1.2;color:#EDE9DF;">Medicina traumatológica</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(237,233,223,0.62);text-wrap:pretty;">Consulta de traumatología dentro del club. Diagnóstico de lesiones, seguimiento de patología articular y criterio médico sobre tu plan: qué puedes cargar, cuándo y cuánto.</p>
+          </div>
+        </div>
+        <div data-reveal="140" onMouseMove="{{ glareMove }}" onMouseLeave="{{ glareLeave }}" style="position:relative;display:flex;flex-direction:column;background:#183A40;border-radius:16px;overflow:hidden;transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 40px rgba(24,58,64,0.28);">
+          <div data-glare="true" aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background:radial-gradient(420px circle at 50% 50%,rgba(255,255,255,0.12),transparent 65%);"></div>
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden;">
+            <img src="images/recuperacion.webp" srcset="images/recuperacion-mobile.webp 959w, images/recuperacion.webp 1672w" sizes="(min-width: 1024px) 380px, 90vw" alt="Fisioterapia" width="1672" height="941" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,43,0.85),rgba(16,38,43,0.15) 55%,transparent);"></div>
+            <span style="position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#ABD2CF;background:rgba(171,210,207,0.22);padding:5px 9px;border-radius:6px;">Repara</span>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1;padding:24px;">
+            <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;color:#C3A43C;font-variant-numeric:tabular-nums;">03</p>
+            <h3 style="margin:0 0 10px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;line-height:1.2;color:#EDE9DF;">Fisioterapia</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(237,233,223,0.62);text-wrap:pretty;">Tratamiento y readaptación en el mismo lugar donde entrenas. El fisioterapeuta que te trata habla cada semana con el entrenador que te programa.</p>
+          </div>
+        </div>
+        <div data-reveal="0" onMouseMove="{{ glareMove }}" onMouseLeave="{{ glareLeave }}" style="position:relative;display:flex;flex-direction:column;background:#183A40;border-radius:16px;overflow:hidden;transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 40px rgba(24,58,64,0.28);">
+          <div data-glare="true" aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background:radial-gradient(420px circle at 50% 50%,rgba(255,255,255,0.12),transparent 65%);"></div>
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden;">
+            <img src="images/instalaciones.webp" srcset="images/instalaciones-mobile.webp 959w, images/instalaciones.webp 1672w" sizes="(min-width: 1024px) 380px, 90vw" alt="Nutrición" width="1672" height="941" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,43,0.85),rgba(16,38,43,0.15) 55%,transparent);"></div>
+            <span style="position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#C3A43C;background:rgba(195,164,60,0.2);padding:5px 9px;border-radius:6px;">Nutre</span>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1;padding:24px;">
+            <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;color:#C3A43C;font-variant-numeric:tabular-nums;">04</p>
+            <h3 style="margin:0 0 10px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;line-height:1.2;color:#EDE9DF;">Nutrición</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(237,233,223,0.62);text-wrap:pretty;">Plan de alimentación construido sobre tu composición corporal, tu agenda real y tus objetivos. Con seguimiento, no con un PDF y suerte.</p>
+          </div>
+        </div>
+        <div data-reveal="70" onMouseMove="{{ glareMove }}" onMouseLeave="{{ glareLeave }}" style="position:relative;display:flex;flex-direction:column;background:#183A40;border-radius:16px;overflow:hidden;transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 40px rgba(24,58,64,0.28);">
+          <div data-glare="true" aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background:radial-gradient(420px circle at 50% 50%,rgba(255,255,255,0.12),transparent 65%);"></div>
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden;">
+            <img src="images/fuerza.webp" srcset="images/fuerza-mobile.webp 959w, images/fuerza.webp 1672w" sizes="(min-width: 1024px) 380px, 90vw" alt="Podología" width="1672" height="941" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,43,0.85),rgba(16,38,43,0.15) 55%,transparent);"></div>
+            <span style="position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#ABD2CF;background:rgba(171,210,207,0.22);padding:5px 9px;border-radius:6px;">Repara</span>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1;padding:24px;">
+            <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;color:#C3A43C;font-variant-numeric:tabular-nums;">05</p>
+            <h3 style="margin:0 0 10px;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;line-height:1.2;color:#EDE9DF;">Podología</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(237,233,223,0.62);text-wrap:pretty;">Tu pisada afecta a cada sentadilla y cada zancada. Estudio de la marcha, tratamiento y plantillas personalizadas si las necesitas — decidido junto al resto de tu equipo.</p>
+          </div>
+        </div>
+        <div data-reveal="140" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:24px;">
+          <p style="margin:0 0 10px;font-size:16px;color:rgba(33,76,83,0.6);">¿No sabes por dónde empezar?</p>
+          <h3 style="margin:0 0 22px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.5rem,1.2rem + 1vw,1.9rem);color:#214C53;">Empieza por la evaluación.</h3>
+          <a href="#acceso" style="display:inline-flex;align-items:center;gap:10px;background:#214C53;color:#EDE9DF;font-size:15px;font-weight:600;padding:15px 28px;border-radius:9999px;text-decoration:none;transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="color:#FFFFFF;transform:translateY(-2px);box-shadow:0 10px 26px rgba(33,76,83,0.3);" style-active="transform:scale(0.98);">Solicitar evaluación <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ESPACIO ══════════ -->
+  <section id="espacio" data-screen-label="Espacio" style="background:#D9D4C8;padding:clamp(96px,13vw,160px) 0 clamp(72px,9vw,120px);scroll-margin-top:76px;content-visibility:auto;contain-intrinsic-size:1px 900px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);margin-bottom:clamp(40px,5vw,56px);">
+      <div data-reveal="0">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#A8862F;">El espacio</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.5vw,3.75rem);line-height:1.1;letter-spacing:-0.01em;color:#214C53;max-width:15ch;text-wrap:balance;">Arquitectura para el rendimiento.</h2>
+      </div>
+    </div>
+    <div data-hscroll="true" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:8px clamp(20px,4vw,64px) 24px;-ms-overflow-style:none;cursor:grab;">
+      <figure style="margin:0;flex:0 0 auto;width:min(80vw,620px);scroll-snap-align:center;">
+        <div style="aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#C9C3B4;">
+          <img src="images/fuerza.webp" srcset="images/fuerza-mobile.webp 959w, images/fuerza.webp 1672w" sizes="(min-width: 1024px) 620px, 80vw" alt="Sala de fuerza" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);" style-hover="transform:scale(1.04);">
+        </div>
+        <figcaption style="margin-top:14px;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#A8862F;">Sala de fuerza</figcaption>
+      </figure>
+      <figure style="margin:0;flex:0 0 auto;width:min(80vw,620px);scroll-snap-align:center;">
+        <div style="aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#C9C3B4;">
+          <img src="images/recuperacion.webp" srcset="images/recuperacion-mobile.webp 959w, images/recuperacion.webp 1672w" sizes="(min-width: 1024px) 620px, 80vw" alt="Recuperación y fisioterapia" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);" style-hover="transform:scale(1.04);">
+        </div>
+        <figcaption style="margin-top:14px;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#A8862F;">Recuperación y fisioterapia</figcaption>
+      </figure>
+      <figure style="margin:0;flex:0 0 auto;width:min(80vw,620px);scroll-snap-align:center;">
+        <div style="aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#C9C3B4;">
+          <img src="images/evaluacion.webp" srcset="images/evaluacion-mobile.webp 959w, images/evaluacion.webp 1672w" sizes="(min-width: 1024px) 620px, 80vw" alt="Zona de evaluación y rendimiento" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);" style-hover="transform:scale(1.04);">
+        </div>
+        <figcaption style="margin-top:14px;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#A8862F;">Zona de evaluación y rendimiento</figcaption>
+      </figure>
+      <figure style="margin:0;flex:0 0 auto;width:min(80vw,620px);scroll-snap-align:center;">
+        <div style="aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#C9C3B4;">
+          <img src="images/entrenamiento.webp" srcset="images/entrenamiento-mobile.webp 959w, images/entrenamiento.webp 1672w" sizes="(min-width: 1024px) 620px, 80vw" alt="Entrenamiento personal" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);" style-hover="transform:scale(1.04);">
+        </div>
+        <figcaption style="margin-top:14px;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#A8862F;">Entrenamiento personal</figcaption>
+      </figure>
+      <figure style="margin:0;flex:0 0 auto;width:min(80vw,620px);scroll-snap-align:center;">
+        <div style="aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#C9C3B4;">
+          <img src="images/instalaciones.webp" srcset="images/instalaciones-mobile.webp 959w, images/instalaciones.webp 1672w" sizes="(min-width: 1024px) 620px, 80vw" alt="Instalaciones" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);" style-hover="transform:scale(1.04);">
+        </div>
+        <figcaption style="margin-top:14px;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#A8862F;">Instalaciones</figcaption>
+      </figure>
+      <div style="flex:0 0 auto;width:min(80vw,380px);scroll-snap-align:center;display:flex;flex-direction:column;justify-content:center;padding:12px 24px 12px 12px;">
+        <img src="images/logo-muv-petroleo.png" alt="MÜV Vital" width="553" height="306" loading="lazy" decoding="async" style="height:64px;width:auto;object-fit:contain;object-position:left;margin-bottom:20px;">
+        <p style="margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#A8862F;">Centro</p>
+        <div style="font-size:14.5px;line-height:1.7;color:rgba(33,76,83,0.7);">
+          <p style="margin:0;">Avenida Reino de España, 78, 04740</p>
+          <p style="margin:0;">Roquetas de Mar, Almería</p>
+          <p style="margin:12px 0 0;font-weight:600;color:#214C53;">680 63 10 98</p>
+        </div>
+        <a href="https://maps.google.com/?q=Avenida%20Reino%20de%20Espa%C3%B1a%2078%2C%2004740%20Roquetas%20de%20Mar%2C%20Almer%C3%ADa" target="_blank" rel="noopener noreferrer" style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#214C53;text-decoration:none;transition:color 0.2s ease;" style-hover="color:#2E888D;">Cómo llegar <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ EQUIPO ══════════ -->
+  <sc-if value="{{ mostrarEquipoVal }}" hint-placeholder-val="{{ true }}">
+    <section id="equipo" data-screen-label="Equipo" style="background:#D9D4C8;padding:clamp(72px,9vw,120px) 0 clamp(96px,13vw,160px);scroll-margin-top:76px;content-visibility:auto;contain-intrinsic-size:1px 1100px;">
+      <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+        <div data-reveal="0" style="margin-bottom:clamp(48px,7vw,64px);">
+          <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#A8862F;">El equipo</p>
+          <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.9rem,1rem + 3vw,3.3rem);line-height:1.12;letter-spacing:-0.01em;color:#214C53;max-width:22ch;text-wrap:balance;">Las decisiones sobre tu cuerpo las toma gente colegiada para tomarlas.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(24px,3vw,40px);">
+          <div data-reveal="0">
+            <div style="aspect-ratio:3/4;background:#C9C3B4;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <p style="margin:0;padding:0 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,76,83,0.35);text-align:center;">«PENDIENTE: foto-traumatología»</p>
+            </div>
+            <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A8862F;">Traumatología</p>
+            <h3 style="margin:0 0 4px;font-family:'Playfair Display',serif;font-weight:500;font-size:18px;color:#214C53;">«PENDIENTE: nombre»</h3>
+            <p style="margin:0;font-size:12px;color:rgba(33,76,83,0.5);">«PENDIENTE: titulación · nº colegiado»</p>
+          </div>
+          <div data-reveal="80">
+            <div style="aspect-ratio:3/4;background:#C9C3B4;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <p style="margin:0;padding:0 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,76,83,0.35);text-align:center;">«PENDIENTE: foto-fisioterapia»</p>
+            </div>
+            <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A8862F;">Fisioterapia</p>
+            <h3 style="margin:0 0 4px;font-family:'Playfair Display',serif;font-weight:500;font-size:18px;color:#214C53;">«PENDIENTE: nombre»</h3>
+            <p style="margin:0;font-size:12px;color:rgba(33,76,83,0.5);">«PENDIENTE: titulación · nº colegiado»</p>
+          </div>
+          <div data-reveal="160">
+            <div style="aspect-ratio:3/4;background:#C9C3B4;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <p style="margin:0;padding:0 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,76,83,0.35);text-align:center;">«PENDIENTE: foto-nutrición»</p>
+            </div>
+            <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A8862F;">Nutrición</p>
+            <h3 style="margin:0 0 4px;font-family:'Playfair Display',serif;font-weight:500;font-size:18px;color:#214C53;">«PENDIENTE: nombre»</h3>
+            <p style="margin:0;font-size:12px;color:rgba(33,76,83,0.5);">«PENDIENTE: titulación · nº colegiado»</p>
+          </div>
+          <div data-reveal="0">
+            <div style="aspect-ratio:3/4;background:#C9C3B4;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <p style="margin:0;padding:0 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,76,83,0.35);text-align:center;">«PENDIENTE: foto-podología»</p>
+            </div>
+            <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A8862F;">Podología</p>
+            <h3 style="margin:0 0 4px;font-family:'Playfair Display',serif;font-weight:500;font-size:18px;color:#214C53;">«PENDIENTE: nombre»</h3>
+            <p style="margin:0;font-size:12px;color:rgba(33,76,83,0.5);">«PENDIENTE: titulación · nº colegiado»</p>
+          </div>
+          <div data-reveal="80">
+            <div style="aspect-ratio:3/4;background:#C9C3B4;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <p style="margin:0;padding:0 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,76,83,0.35);text-align:center;">«PENDIENTE: foto-entrenador-1»</p>
+            </div>
+            <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A8862F;">Entrenamiento personal</p>
+            <h3 style="margin:0 0 4px;font-family:'Playfair Display',serif;font-weight:500;font-size:18px;color:#214C53;">«PENDIENTE: nombre»</h3>
+            <p style="margin:0;font-size:12px;color:rgba(33,76,83,0.5);">«PENDIENTE: titulación»</p>
+          </div>
+          <div data-reveal="160">
+            <div style="aspect-ratio:3/4;background:#C9C3B4;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <p style="margin:0;padding:0 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(33,76,83,0.35);text-align:center;">«PENDIENTE: foto-entrenador-2»</p>
+            </div>
+            <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A8862F;">Entrenamiento personal</p>
+            <h3 style="margin:0 0 4px;font-family:'Playfair Display',serif;font-weight:500;font-size:18px;color:#214C53;">«PENDIENTE: nombre»</h3>
+            <p style="margin:0;font-size:12px;color:rgba(33,76,83,0.5);">«PENDIENTE: titulación»</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══════════ PROGRESO ══════════ -->
+  <section data-screen-label="Progreso" data-tilt-stage="true" style="position:relative;background:#183A40;padding:clamp(96px,13vw,160px) 0;overflow:hidden;content-visibility:auto;contain-intrinsic-size:1px 1300px;background-image:linear-gradient(rgba(217,212,200,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(217,212,200,0.035) 1px,transparent 1px);background-size:60px 60px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div data-reveal="0" style="margin-bottom:clamp(40px,6vw,64px);">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ABD2CF;">Seguimiento</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2.2rem,1.2rem + 4vw,4.2rem);line-height:1.05;letter-spacing:-0.02em;color:#FFFFFF;max-width:16ch;text-wrap:balance;">Fuerza <em style="font-style:italic;">con seguimiento clínico.</em></h2>
+      </div>
+
+      <div onMouseMove="{{ glareMove }}" onMouseLeave="{{ glareLeave }}" style="position:relative;border-radius:clamp(24px,4vw,40px);overflow:hidden;background:linear-gradient(145deg,#214C53 0%,#183A40 100%);border:1px solid rgba(255,255,255,0.05);box-shadow:0 40px 100px -20px rgba(4,13,15,0.9), 0 20px 40px -20px rgba(4,13,15,0.8), inset 0 1px 2px rgba(255,255,255,0.12);">
+        <img src="images/soporte-posterior.webp" srcset="images/soporte-posterior-mobile.webp 959w, images/soporte-posterior.webp 1672w" sizes="100vw" alt="" aria-hidden="true" width="1672" height="941" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;inset:0;background:rgba(24,58,64,0.82);"></div>
+        <div data-glare="true" aria-hidden="true" style="position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background:radial-gradient(700px circle at 50% 50%,rgba(46,136,141,0.14),transparent 45%);"></div>
+
+        <div style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(36px,4vw,48px);align-items:center;padding:clamp(36px,5vw,72px) clamp(24px,4vw,64px);">
+
+          <div data-reveal="100">
+            <h3 style="margin:0 0 18px;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(1.8rem,1.3rem + 1.6vw,2.6rem);line-height:1.12;letter-spacing:-0.01em;color:#FFFFFF;text-wrap:balance;">Tu progreso, <em style="font-style:italic;">medido.</em></h3>
+            <p style="margin:0 0 30px;font-size:15.5px;line-height:1.7;color:rgba(237,233,223,0.72);max-width:40ch;text-wrap:pretty;"><strong style="font-weight:600;color:#EDE9DF;">MÜV Vital</strong> reúne traumatología, fisioterapia, nutrición, podología y entrenamiento personal bajo un mismo criterio clínico, con seguimiento individual de cada socio.</p>
+            <a href="#acceso" style="display:inline-flex;align-items:center;gap:10px;background:#2E888D;color:#FFFFFF;font-size:15px;font-weight:600;padding:15px 28px;border-radius:9999px;text-decoration:none;transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="color:#FFFFFF;transform:translateY(-2px);box-shadow:0 10px 28px rgba(4,13,15,0.5);" style-active="transform:scale(0.98);">Únete al club <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div style="position:relative;display:flex;justify-content:center;align-items:center;perspective:1200px;padding:16px 0;">
+            <div data-scrub="true" style="transform-style:preserve-3d;will-change:transform;opacity:0;transform:translateY(240px) scale(0.7) rotateX(50deg) rotateY(-26deg);">
+
+          <!-- iPhone 3D -->
+          <div data-phone="true" aria-hidden="true" style="position:relative;width:264px;height:548px;border-radius:48px;background:#111111;box-shadow:inset 0 0 0 2px #52525B, inset 0 0 0 7px #000000, 0 40px 80px -15px rgba(4,13,15,0.85), 0 15px 25px -5px rgba(4,13,15,0.6);transform-style:preserve-3d;transition:transform 1s cubic-bezier(0.22,1,0.36,1);will-change:transform;">
+            <div style="position:absolute;top:112px;left:-3px;width:3px;height:24px;border-radius:4px 0 0 4px;background:linear-gradient(90deg,#404040,#171717);"></div>
+            <div style="position:absolute;top:152px;left:-3px;width:3px;height:44px;border-radius:4px 0 0 4px;background:linear-gradient(90deg,#404040,#171717);"></div>
+            <div style="position:absolute;top:210px;left:-3px;width:3px;height:44px;border-radius:4px 0 0 4px;background:linear-gradient(90deg,#404040,#171717);"></div>
+            <div style="position:absolute;top:164px;right:-3px;width:3px;height:66px;border-radius:0 4px 4px 0;background:linear-gradient(270deg,#404040,#171717);"></div>
+
+            <div style="position:absolute;inset:7px;background:#061114;border-radius:42px;overflow:hidden;box-shadow:inset 0 0 15px rgba(0,0,0,1);">
+              <div style="position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(110deg,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0) 45%);"></div>
+              <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);width:100px;height:26px;background:#000000;border-radius:9999px;z-index:6;display:flex;align-items:center;justify-content:flex-end;padding:0 11px;box-sizing:border-box;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#2E888D;box-shadow:0 0 8px rgba(46,136,141,0.8);animation:muv-pulse 2s ease-in-out infinite;"></div>
+              </div>
+
+              <div style="position:relative;width:100%;height:100%;padding:52px 20px 30px;box-sizing:border-box;display:flex;flex-direction:column;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;">
+                  <div style="display:flex;flex-direction:column;">
+                    <span style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,212,200,0.45);margin-bottom:4px;">Hoy</span>
+                    <span style="font-size:19px;font-weight:700;letter-spacing:-0.01em;color:#FFFFFF;">Seguimiento</span>
+                  </div>
+                  <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#D9D4C8;">MV</div>
+                </div>
+
+                <div style="position:relative;width:176px;height:176px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.8));">
+                  <svg width="176" height="176" viewBox="0 0 176 176" style="position:absolute;inset:0;">
+                    <circle cx="88" cy="88" r="64" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="12"></circle>
+                    <circle data-ring="60" cx="88" cy="88" r="64" fill="none" stroke="#2E888D" stroke-width="12" stroke-linecap="round" stroke-dasharray="402" style="stroke-dashoffset:402;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 2s cubic-bezier(0.22,1,0.36,1) 0.3s;"></circle>
+                  </svg>
+                  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;">
+                    <span data-counter="92" style="font-size:38px;font-weight:700;letter-spacing:-0.03em;color:#FFFFFF;font-variant-numeric:tabular-nums;">0</span>
+                    <span style="font-size:8px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(46,136,141,0.75);margin-top:2px;">Adherencia</span>
+                  </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <div style="display:flex;align-items:center;gap:12px;border-radius:16px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 20px rgba(0,0,0,0.3);">
+                    <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,rgba(46,136,141,0.22),rgba(46,136,141,0.05));border:1px solid rgba(46,136,141,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E888D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div style="flex:1;">
+                      <div style="height:8px;width:80px;border-radius:9999px;background:rgba(217,212,200,0.4);margin-bottom:8px;"></div>
+                      <div style="height:6px;width:48px;border-radius:9999px;background:rgba(217,212,200,0.14);"></div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:12px;border-radius:16px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 20px rgba(0,0,0,0.3);">
+                    <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,rgba(171,210,207,0.22),rgba(171,210,207,0.05));border:1px solid rgba(171,210,207,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ABD2CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <div style="flex:1;">
+                      <div style="height:8px;width:64px;border-radius:9999px;background:rgba(217,212,200,0.4);margin-bottom:8px;"></div>
+                      <div style="height:6px;width:96px;border-radius:9999px;background:rgba(217,212,200,0.14);"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:120px;height:4px;border-radius:9999px;background:rgba(255,255,255,0.2);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badges flotantes -->
+          <div data-reveal="320" aria-hidden="true" style="position:absolute;top:64px;left:-56px;z-index:3;display:flex;align-items:center;gap:11px;border-radius:16px;padding:11px 15px;background:rgba(24,58,64,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(217,212,200,0.16);box-shadow:0 25px 50px -12px rgba(16,42,47,0.55);">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,rgba(46,136,141,0.3),rgba(46,136,141,0.08));border:1px solid rgba(46,136,141,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7FC4C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"></path></svg>
+            </div>
+            <div>
+              <p style="margin:0;font-size:12.5px;font-weight:700;letter-spacing:-0.01em;color:#FFFFFF;">Objetivo alcanzado</p>
+              <p style="margin:0;font-size:10.5px;font-weight:500;color:rgba(217,212,200,0.55);">Progreso registrado</p>
+            </div>
+          </div>
+          <div data-reveal="420" aria-hidden="true" style="position:absolute;bottom:120px;right:-56px;z-index:3;display:flex;align-items:center;gap:11px;border-radius:16px;padding:11px 15px;background:rgba(24,58,64,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(217,212,200,0.16);box-shadow:0 25px 50px -12px rgba(16,42,47,0.55);">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,rgba(171,210,207,0.3),rgba(171,210,207,0.08));border:1px solid rgba(171,210,207,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ABD2CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <div>
+              <p style="margin:0;font-size:12.5px;font-weight:700;letter-spacing:-0.01em;color:#FFFFFF;">Revisión clínica</p>
+              <p style="margin:0;font-size:10.5px;font-weight:500;color:rgba(217,212,200,0.55);">Equipo médico</p>
+            </div>
+          </div>
+
+            </div>
+          </div>
+
+          <div data-reveal="200" style="display:flex;justify-content:center;">
+            <img src="images/logo-muv-blanco.png" alt="MÜV Vital" width="553" height="306" loading="lazy" decoding="async" style="width:clamp(170px,16vw,250px);height:auto;">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ GALERÍA ══════════ -->
+  <section data-screen-label="Galería" style="background:#214C53;padding:clamp(80px,10vw,128px) 0;overflow:hidden;content-visibility:auto;contain-intrinsic-size:1px 620px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);margin-bottom:clamp(40px,5vw,56px);">
+      <div data-reveal="0">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">El club</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.5vw,3.75rem);line-height:1.1;letter-spacing:-0.01em;color:#EDE9DF;max-width:14ch;text-wrap:balance;">El club en movimiento.</h2>
+      </div>
+    </div>
+    <div style="width:100%;mask-image:linear-gradient(to right,transparent,#000000 8%,#000000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000000 8%,#000000 92%,transparent);">
+      <div style="display:flex;gap:24px;width:max-content;animation:muv-marquee 44s linear infinite;">
+        <img src="images/entrenamiento-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(-2deg);">
+        <img src="images/recuperacion-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(2.5deg);">
+        <img src="images/evaluacion-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(-1.5deg);">
+        <img src="images/fuerza-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(3deg);">
+        <img src="images/instalaciones-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(-2.5deg);">
+        <img src="images/entrenamiento-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(-2deg);">
+        <img src="images/recuperacion-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(2.5deg);">
+        <img src="images/evaluacion-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(-1.5deg);">
+        <img src="images/fuerza-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(3deg);">
+        <img src="images/instalaciones-mobile.webp" alt="" aria-hidden="true" width="959" height="540" loading="lazy" decoding="async" style="height:clamp(220px,26vw,320px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;transform:rotate(-2.5deg);">
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TECNOLOGÍA ══════════ -->
+  <section data-screen-label="Tecnología" style="background:#214C53;padding:clamp(80px,10vw,128px) 0;border-top:1px solid rgba(217,212,200,0.08);background-image:linear-gradient(rgba(171,210,207,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(171,210,207,0.05) 1px,transparent 1px);background-size:60px 60px;content-visibility:auto;contain-intrinsic-size:1px 420px;position:relative;overflow:hidden;">
+    <div data-scanline="true" aria-hidden="true" style="position:absolute;left:0;right:0;top:-5%;height:2px;background:linear-gradient(90deg,transparent,rgba(171,210,207,0.7),transparent);box-shadow:0 0 18px rgba(171,210,207,0.5);pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div data-reveal="0">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">Tecnología</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.5vw,3.75rem);line-height:1.1;letter-spacing:-0.01em;color:#EDE9DF;max-width:14ch;text-wrap:balance;">Medimos para decidir.</h2>
+      </div>
+      <p data-reveal="120" style="margin:clamp(40px,6vw,64px) 0 0;font-size:13px;letter-spacing:0.08em;color:rgba(171,210,207,0.4);text-align:center;font-variant-numeric:tabular-nums;">«PENDIENTE: cifras del club — m², profesionales, socios máx.»</p>
+    </div>
+  </section>
+
+  <!-- ══════════ ACCESO ══════════ -->
+  <section id="acceso" data-screen-label="Acceso" style="background:#183A40;padding:clamp(96px,13vw,160px) 0;scroll-margin-top:76px;content-visibility:auto;contain-intrinsic-size:1px 1200px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div data-reveal="0" style="margin-bottom:clamp(20px,3vw,28px);">
+        <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">Acceso</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,1rem + 3.2vw,3.6rem);line-height:1.1;letter-spacing:-0.01em;color:#EDE9DF;max-width:18ch;text-wrap:balance;">Empezar aquí no es apuntarse. <em style="font-style:italic;">Es evaluarse.</em></h2>
+      </div>
+      <p data-reveal="100" style="margin:0 0 12px;font-size:clamp(1.05rem,1rem + 0.5vw,1.3rem);line-height:1.55;color:rgba(237,233,223,0.72);max-width:60ch;text-wrap:pretty;">Trabajamos con un número limitado de socios para mantener la atención que ofrecemos. El primer paso es una evaluación privada con el equipo.</p>
+      <p data-reveal="160" style="margin:0 0 clamp(48px,7vw,72px);font-size:12px;letter-spacing:0.06em;color:rgba(46,136,141,0.75);font-variant-numeric:tabular-nums;">Aforo de socios limitado a «PENDIENTE: nº» personas.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,80px);align-items:start;">
+        <div>
+          <p data-reveal="0" style="margin:0 0 32px;font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">Cómo empezar</p>
+          <div style="display:flex;flex-direction:column;gap:32px;">
+            <div data-reveal="60" style="display:flex;gap:24px;">
+              <p style="margin:0;flex-shrink:0;width:44px;font-size:24px;font-weight:600;color:#2E888D;font-variant-numeric:tabular-nums;">01</p>
+              <div>
+                <h3 style="margin:0 0 6px;font-family:'Playfair Display',serif;font-weight:500;font-size:19px;color:#EDE9DF;">Solicita</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">Envía el formulario. Te llamamos en menos de 24 h laborables.</p>
+              </div>
+            </div>
+            <div data-reveal="140" style="display:flex;gap:24px;">
+              <p style="margin:0;flex-shrink:0;width:44px;font-size:24px;font-weight:600;color:#2E888D;font-variant-numeric:tabular-nums;">02</p>
+              <div>
+                <h3 style="margin:0 0 6px;font-family:'Playfair Display',serif;font-weight:500;font-size:19px;color:#EDE9DF;">Evalúate</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">60–90 min con el equipo: historia, composición, movilidad y pisada.</p>
+              </div>
+            </div>
+            <div data-reveal="220" style="display:flex;gap:24px;">
+              <p style="margin:0;flex-shrink:0;width:44px;font-size:24px;font-weight:600;color:#2E888D;font-variant-numeric:tabular-nums;">03</p>
+              <div>
+                <h3 style="margin:0 0 6px;font-family:'Playfair Display',serif;font-weight:500;font-size:19px;color:#EDE9DF;">Decide</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.65;color:rgba(237,233,223,0.62);">Te presentamos tu plan y las condiciones. Sin compromiso y sin letra pequeña.</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:44px;padding-top:32px;border-top:1px solid rgba(217,212,200,0.12);">
+            <p style="margin:0 0 6px;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(237,233,223,0.45);">También por teléfono o WhatsApp</p>
+            <a href="tel:+34680631098" style="font-family:'Playfair Display',serif;font-size:26px;color:#EDE9DF;text-decoration:none;transition:color 0.2s ease;" style-hover="color:#ABD2CF;">680 63 10 98</a>
+          </div>
+        </div>
+
+        <div data-reveal="120" style="background:#2E6A73;border:1px solid rgba(217,212,200,0.14);border-radius:16px;padding:clamp(24px,3.4vw,36px);">
+          <sc-if value="{{ formExito }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center;padding:48px 12px;">
+              <p style="margin:0 0 16px;font-family:'Playfair Display',serif;font-size:30px;color:#ABD2CF;">Recibido.</p>
+              <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(237,233,223,0.75);">Te llamamos en menos de 24 h laborables para proponerte fecha y hora.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ formPendiente }}" hint-placeholder-val="{{ true }}">
+            <h3 style="margin:0 0 24px;font-family:'Playfair Display',serif;font-weight:500;font-size:22px;color:#EDE9DF;">Solicitar una evaluación privada</h3>
+            <form onSubmit="{{ enviarFormulario }}" noValidate="true">
+              <input type="text" name="_gotcha" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+              <label style="display:block;margin-bottom:18px;">
+                <span style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,233,223,0.7);">Nombre y apellidos *</span>
+                <input type="text" name="nombre" placeholder="Tu nombre completo" autoComplete="name" style="width:100%;box-sizing:border-box;background:rgba(24,58,64,0.55);border:1px solid rgba(217,212,200,0.2);border-radius:8px;color:#EDE9DF;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s ease, box-shadow 0.2s ease;" style-focus="border-color:#ABD2CF;box-shadow:0 0 0 3px rgba(171,210,207,0.18);">
+                <sc-if value="{{ errNombre }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:5px;font-size:12px;color:#9ED3CB;">{{ errNombre }}</span></sc-if>
+              </label>
+              <label style="display:block;margin-bottom:18px;">
+                <span style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,233,223,0.7);">Teléfono *</span>
+                <input type="tel" name="telefono" placeholder="600 000 000" autoComplete="tel" style="width:100%;box-sizing:border-box;background:rgba(24,58,64,0.55);border:1px solid rgba(217,212,200,0.2);border-radius:8px;color:#EDE9DF;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s ease, box-shadow 0.2s ease;" style-focus="border-color:#ABD2CF;box-shadow:0 0 0 3px rgba(171,210,207,0.18);">
+                <sc-if value="{{ errTelefono }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:5px;font-size:12px;color:#9ED3CB;">{{ errTelefono }}</span></sc-if>
+              </label>
+              <label style="display:block;margin-bottom:18px;">
+                <span style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,233,223,0.7);">Email *</span>
+                <input type="email" name="email" placeholder="tu@email.com" autoComplete="email" style="width:100%;box-sizing:border-box;background:rgba(24,58,64,0.55);border:1px solid rgba(217,212,200,0.2);border-radius:8px;color:#EDE9DF;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s ease, box-shadow 0.2s ease;" style-focus="border-color:#ABD2CF;box-shadow:0 0 0 3px rgba(171,210,207,0.18);">
+                <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:5px;font-size:12px;color:#9ED3CB;">{{ errEmail }}</span></sc-if>
+              </label>
+              <label style="display:block;margin-bottom:18px;">
+                <span style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,233,223,0.7);">Objetivo principal *</span>
+                <select name="objetivo" style="width:100%;box-sizing:border-box;background:rgba(24,58,64,0.55);border:1px solid rgba(217,212,200,0.2);border-radius:8px;color:#EDE9DF;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s ease, box-shadow 0.2s ease;" style-focus="border-color:#ABD2CF;box-shadow:0 0 0 3px rgba(171,210,207,0.18);">
+                  <option value="">Selecciona una opción</option>
+                  <option value="dolor">Dolor o lesión</option>
+                  <option value="rendimiento">Rendimiento y composición corporal</option>
+                  <option value="salud">Salud y longevidad</option>
+                  <option value="no-claro">Aún no lo tengo claro</option>
+                </select>
+                <sc-if value="{{ errObjetivo }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:5px;font-size:12px;color:#9ED3CB;">{{ errObjetivo }}</span></sc-if>
+              </label>
+              <label style="display:block;margin-bottom:18px;">
+                <span style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,233,223,0.7);">Franja horaria preferida</span>
+                <select name="horario" style="width:100%;box-sizing:border-box;background:rgba(24,58,64,0.55);border:1px solid rgba(217,212,200,0.2);border-radius:8px;color:#EDE9DF;font-size:15px;padding:13px 14px;outline:none;transition:border-color 0.2s ease, box-shadow 0.2s ease;" style-focus="border-color:#ABD2CF;box-shadow:0 0 0 3px rgba(171,210,207,0.18);">
+                  <option value="">Selecciona una opción</option>
+                  <option value="manana">Mañana</option>
+                  <option value="mediodia">Mediodía</option>
+                  <option value="tarde">Tarde</option>
+                </select>
+              </label>
+              <label style="display:block;margin-bottom:20px;">
+                <span style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,233,223,0.7);">Mensaje (opcional)</span>
+                <textarea name="mensaje" rows="3" placeholder="Cuéntanos algo sobre ti..." style="width:100%;box-sizing:border-box;background:rgba(24,58,64,0.55);border:1px solid rgba(217,212,200,0.2);border-radius:8px;color:#EDE9DF;font-size:15px;padding:13px 14px;outline:none;resize:vertical;min-height:84px;transition:border-color 0.2s ease, box-shadow 0.2s ease;" style-focus="border-color:#ABD2CF;box-shadow:0 0 0 3px rgba(171,210,207,0.18);"></textarea>
+              </label>
+              <label style="display:flex;align-items:flex-start;gap:12px;margin-bottom:6px;cursor:pointer;">
+                <input type="checkbox" checked="{{ rgpdChecked }}" onChange="{{ toggleRgpd }}" style="margin:3px 0 0;width:16px;height:16px;accent-color:#2E888D;flex-shrink:0;cursor:pointer;">
+                <span style="font-size:12.5px;line-height:1.6;color:rgba(237,233,223,0.55);">He leído y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener" style="color:#9ED3CB;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#ABD2CF;">política de privacidad</a>. Mis datos serán tratados por MÜV Vital para gestionar mi solicitud de evaluación.</span>
+              </label>
+              <sc-if value="{{ errRgpd }}" hint-placeholder-val="{{ false }}"><p style="margin:4px 0 0;font-size:12px;color:#9ED3CB;">{{ errRgpd }}</p></sc-if>
+              <button type="submit" disabled="{{ formEnviando }}" style="margin-top:20px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#2E888D;color:#FFFFFF;font-size:15px;font-weight:600;padding:16px 28px;border:none;border-radius:9999px;cursor:pointer;transition:transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;" style-hover="transform:translateY(-2px);box-shadow:0 10px 26px rgba(16,42,47,0.4);" style-active="transform:scale(0.99);">{{ botonLabel }}</button>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer data-screen-label="Footer" style="background:#214C53;border-top:1px solid rgba(217,212,200,0.08);padding:clamp(64px,8vw,96px) 0 40px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(40px,5vw,64px);margin-bottom:48px;">
+        <div>
+          <img src="images/logo-muv-blanco.png" alt="MÜV Vital" width="553" height="306" loading="lazy" decoding="async" style="height:52px;width:auto;margin-bottom:18px;">
+          <p style="margin:0;font-size:14px;line-height:1.7;color:rgba(217,212,200,0.6);max-width:320px;">MÜV Vital — Club privado de salud y rendimiento. Roquetas de Mar, Almería.</p>
+        </div>
+        <div>
+          <p style="margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">Contacto</p>
+          <div style="font-size:14px;line-height:1.8;color:rgba(217,212,200,0.6);">
+            <p style="margin:0;">Avenida Reino de España, 78, 04740</p>
+            <p style="margin:0;">Roquetas de Mar, Almería</p>
+            <p style="margin:12px 0 0;"><a href="tel:+34680631098" style="color:rgba(237,233,223,0.85);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#FFFFFF;">680 63 10 98</a></p>
+            <p style="margin:0;color:rgba(217,212,200,0.4);">«PENDIENTE: email-contacto»</p>
+            <p style="margin:8px 0 0;color:rgba(195,164,60,0.75);">«PENDIENTE: horario»</p>
+          </div>
+        </div>
+        <div>
+          <p style="margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C3A43C;">Legal</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="legal.html#aviso-legal" style="font-size:14px;color:rgba(217,212,200,0.6);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Aviso legal</a>
+            <a href="legal.html#privacidad" style="font-size:14px;color:rgba(217,212,200,0.6);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Privacidad</a>
+            <a href="legal.html#cookies" style="font-size:14px;color:rgba(217,212,200,0.6);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Cookies</a>
+            <a href="legal.html#inteligencia-artificial" style="font-size:14px;color:rgba(217,212,200,0.6);text-decoration:none;transition:color 0.2s ease;" style-hover="color:#EDE9DF;">Inteligencia artificial y normativa UE</a>
+          </div>
+        </div>
+      </div>
+      <div style="height:1px;background:linear-gradient(90deg,#C3A43C,transparent);margin-bottom:28px;"></div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;">
+        <p style="margin:0;font-size:12px;line-height:1.6;color:rgba(217,212,200,0.4);max-width:640px;">Los servicios sanitarios de MÜV Vital (medicina, fisioterapia, nutrición y podología) se prestan por profesionales colegiados. «PENDIENTE: nº-registro-sanitario-centro»</p>
+        <p style="margin:0;font-size:12px;color:rgba(217,212,200,0.4);font-variant-numeric:tabular-nums;">© {{ anio }} MÜV Vital</p>
+      </div>
+      <p style="margin:20px 0 0;font-size:11.5px;color:rgba(217,212,200,0.3);">Esta página web ha sido editada, incluyendo parte de su contenido e imágenes, con ayuda de inteligencia artificial.</p>
+    </div>
+  </footer>
+
+  <!-- ══════════ COOKIES ══════════ -->
+  <sc-if value="{{ cookieVisible }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Aviso de cookies" data-screen-label="Cookies" style="position:fixed;bottom:16px;left:16px;right:16px;z-index:90;margin:0 auto;max-width:760px;background:rgba(24,58,64,0.97);border:1px solid rgba(217,212,200,0.14);border-radius:16px;padding:clamp(18px,3vw,24px);box-shadow:0 24px 60px rgba(10,26,30,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+        <p style="margin:0;flex:1 1 320px;font-size:13.5px;line-height:1.6;color:rgba(237,233,223,0.8);">Usamos cookies propias y de terceros para mejorar tu experiencia y analizar el uso del sitio. Puedes aceptarlas o rechazarlas. Consulta nuestra <a href="legal.html#cookies" style="color:#7FC4C9;text-decoration:underline;text-underline-offset:2px;" style-hover="color:#ABD2CF;">política de cookies</a>.</p>
+        <div style="display:flex;flex-shrink:0;gap:10px;">
+          <button onClick="{{ rechazarCookies }}" style="background:transparent;border:1px solid rgba(217,212,200,0.25);color:rgba(237,233,223,0.85);font-size:14px;font-weight:600;padding:11px 20px;border-radius:9999px;cursor:pointer;transition:background 0.2s ease;" style-hover="background:rgba(217,212,200,0.1);">Rechazar</button>
+          <button onClick="{{ aceptarCookies }}" style="background:#2E888D;border:none;color:#FFFFFF;font-size:14px;font-weight:600;padding:11px 22px;border-radius:9999px;cursor:pointer;transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="transform:translateY(-1px);box-shadow:0 8px 20px rgba(16,42,47,0.4);">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mostrarEquipo&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;,
+    &quot;section&quot;: &quot;Contenido&quot;
+  },
+  &quot;bannerCookies&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;options&quot;: [&quot;auto&quot;, &quot;visible&quot;, &quot;oculto&quot;],
+    &quot;default&quot;: &quot;auto&quot;,
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Contenido&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = {
+    isMobile: typeof window !== "undefined" ? window.innerWidth < 1024 : false,
+    menuOpen: false,
+    atTop: true,
+    formEstado: "idle",
+    errores: {},
+    rgpd: false,
+    cookieChoice: "pendiente",
+    cookieReady: false
+  };
+
+  componentDidMount() {
+    this._lastY = window.scrollY || 0;
+    this._raf = null;
+
+    this._onScroll = () => {
+      if (this._raf !== null) return;
+      this._raf = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const atTop = y < 60;
+        if (atTop !== this.state.atTop) {
+          this.setState({ atTop: atTop });
+        }
+        this._updateScrub();
+        this._raf = null;
+      });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+
+    this._onResize = () => {
+      const m = window.innerWidth < 1024;
+      if (m !== this.state.isMobile) {
+        this.setState({ isMobile: m, menuOpen: false });
+      }
+    };
+    window.addEventListener("resize", this._onResize);
+
+    let choice = null;
+    try { choice = localStorage.getItem("muv-cookies-consent"); } catch (e) { choice = "error"; }
+    this._cookieTimer = setTimeout(() => {
+      this.setState({ cookieChoice: choice, cookieReady: true });
+    }, 900);
+
+    this._formLoadTime = Date.now();
+    this._pointerFine = !!(window.matchMedia && window.matchMedia("(pointer: fine)").matches);
+    this._noMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    this._scrubEl = document.querySelector("[data-scrub]");
+    this._setupReveals();
+    this._setupDrag();
+    this._setupPhoneTilt();
+    this._updateScrub();
+  }
+
+  _updateScrub() {
+    const el = this._scrubEl;
+    if (!el) return;
+    if (this._noMotion) {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+      return;
+    }
+    const stage = el.parentElement;
+    const vh = window.innerHeight;
+    const r = stage.getBoundingClientRect();
+    if (r.top > vh * 1.2 || r.bottom < -vh * 0.2) return; // fuera de rango: no tocar
+    const p = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.55)));
+    const e = 1 - Math.pow(1 - p, 3);
+    el.style.opacity = Math.min(1, e * 1.5).toFixed(3);
+    el.style.transform =
+      "translateY(" + ((1 - e) * 240).toFixed(1) + "px)" +
+      " scale(" + (0.7 + 0.3 * e).toFixed(3) + ")" +
+      " rotateX(" + ((1 - e) * 50).toFixed(2) + "deg)" +
+      " rotateY(" + ((1 - e) * -26).toFixed(2) + "deg)";
+  }
+
+  _setupPhoneTilt() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const stage = document.querySelector("[data-tilt-stage]");
+    const phone = document.querySelector("[data-phone]");
+    if (!stage || !phone) return;
+    this._tiltStage = stage;
+    this._phoneRaf = null;
+    this._onStageMove = (e) => {
+      if (!this._pointerFine || window.innerWidth < 1024) return;
+      if (this._phoneRaf !== null) return;
+      this._phoneRaf = requestAnimationFrame(() => {
+        const r = stage.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        phone.style.transform = "rotateY(" + (x * 11).toFixed(2) + "deg) rotateX(" + (-y * 11).toFixed(2) + "deg)";
+        this._phoneRaf = null;
+      });
+    };
+    this._onStageLeave = () => {
+      phone.style.transform = "rotateY(0deg) rotateX(0deg)";
+    };
+    stage.addEventListener("mousemove", this._onStageMove);
+    stage.addEventListener("mouseleave", this._onStageLeave);
+  }
+
+  _countUp(el) {
+    const target = parseInt(el.getAttribute("data-counter"), 10) || 0;
+    const start = performance.now();
+    const dur = 1800;
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(eased * target));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  _setupDrag() {
+    const track = document.querySelector("[data-hscroll]");
+    if (!track) return;
+    this._dragTrack = track;
+    this._dragging = false;
+    this._onDragStart = (e) => {
+      if (e.button !== 0) return;
+      this._dragging = true;
+      this._dragStartX = e.pageX;
+      this._dragStartScroll = track.scrollLeft;
+      track.style.cursor = "grabbing";
+      track.style.scrollSnapType = "none";
+      track.style.userSelect = "none";
+    };
+    this._onDragMove = (e) => {
+      if (!this._dragging) return;
+      track.scrollLeft = this._dragStartScroll - (e.pageX - this._dragStartX);
+    };
+    this._onDragEnd = () => {
+      if (!this._dragging) return;
+      this._dragging = false;
+      track.style.cursor = "grab";
+      track.style.scrollSnapType = "";
+      track.style.userSelect = "";
+    };
+    track.addEventListener("mousedown", this._onDragStart);
+    window.addEventListener("mousemove", this._onDragMove);
+    window.addEventListener("mouseup", this._onDragEnd);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._onResize);
+    if (this._raf !== null) cancelAnimationFrame(this._raf);
+    if (this._cookieTimer) clearTimeout(this._cookieTimer);
+    if (this._io) this._io.disconnect();
+    if (this._formTimer) clearTimeout(this._formTimer);
+    if (this._dragTrack) {
+      this._dragTrack.removeEventListener("mousedown", this._onDragStart);
+      window.removeEventListener("mousemove", this._onDragMove);
+      window.removeEventListener("mouseup", this._onDragEnd);
+    }
+    if (this._tiltStage) {
+      this._tiltStage.removeEventListener("mousemove", this._onStageMove);
+      this._tiltStage.removeEventListener("mouseleave", this._onStageLeave);
+    }
+    if (this._phoneRaf) cancelAnimationFrame(this._phoneRaf);
+  }
+
+  _setupReveals() {
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const ring = document.querySelector("[data-ring]");
+        if (ring) ring.style.strokeDashoffset = ring.getAttribute("data-ring");
+        const counter = document.querySelector("[data-counter]");
+        if (counter) counter.textContent = counter.getAttribute("data-counter");
+        return;
+      }
+      if (!("IntersectionObserver" in window)) return;
+      const els = Array.prototype.slice.call(document.querySelectorAll("[data-reveal], [data-clip], [data-scanline], [data-ring], [data-counter]"));
+      if (els.length === 0) return;
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const el = en.target;
+          if (el.hasAttribute("data-scanline")) {
+            el.style.animation = "muv-scanline 1.8s ease-in-out 0.3s forwards";
+          } else if (el.hasAttribute("data-ring")) {
+            el.style.strokeDashoffset = el.getAttribute("data-ring");
+          } else if (el.hasAttribute("data-counter")) {
+            this._countUp(el);
+          } else if (el.hasAttribute("data-clip")) {
+            el.style.clipPath = "inset(0 0% 0 0)";
+            el.style.opacity = "1";
+          } else {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0px)";
+          }
+          this._io.unobserve(el);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+      els.forEach((el) => {
+        if (el.hasAttribute("data-scanline") || el.hasAttribute("data-ring") || el.hasAttribute("data-counter")) {
+          this._io.observe(el);
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) return; // ya visible: no animar
+        const d = el.getAttribute("data-clip") !== null ? el.getAttribute("data-clip") : el.getAttribute("data-reveal");
+        if (el.hasAttribute("data-clip")) {
+          el.style.clipPath = "inset(0 100% 0 0)";
+          el.style.opacity = "0.4";
+          el.style.transition = "clip-path 1s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)";
+        } else {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(18px)";
+          el.style.transition = "opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1)";
+        }
+        if (d && d !== "0") el.style.transitionDelay = d + "ms";
+        this._io.observe(el);
+      });
+    } catch (e) { /* la revelación es decorativa */ }
+  }
+
+  _validar(form) {
+    const data = new FormData(form);
+    const errs = {};
+    if (!String(data.get("nombre") || "").trim()) errs.nombre = "Campo obligatorio";
+    if (!String(data.get("telefono") || "").trim()) errs.telefono = "Campo obligatorio";
+    const email = String(data.get("email") || "").trim();
+    if (!email) errs.email = "Campo obligatorio";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Email no válido";
+    if (!data.get("objetivo")) errs.objetivo = "Selecciona una opción";
+    if (!this.state.rgpd) errs.rgpd = "Debes aceptar la política de privacidad";
+    if (String(data.get("_gotcha") || "").trim()) return null; // honeypot
+    if (Date.now() - this._formLoadTime < 3000) return null; // anti-bot temporal
+    return errs;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const props = this.props;
+
+    const mostrarEquipoVal = props.mostrarEquipo === undefined || props.mostrarEquipo === null ? true : !!props.mostrarEquipo;
+
+    const modoCookies = props.bannerCookies || "auto";
+    let cookieVisible = false;
+    if (modoCookies === "visible") cookieVisible = true;
+    else if (modoCookies === "oculto") cookieVisible = false;
+    else cookieVisible = s.cookieReady && !s.cookieChoice;
+
+    return {
+      isMobile: s.isMobile,
+      isDesktop: !s.isMobile,
+      menuOpen: s.menuOpen,
+      navBgOpacity: s.atTop && !s.menuOpen ? 0 : 1,
+      abrirMenu: () => this.setState({ menuOpen: true }),
+      cerrarMenu: () => this.setState({ menuOpen: false }),
+
+      tiltCard: (e) => {
+        if (!this._pointerFine || window.innerWidth < 1024) return;
+        const c = e.currentTarget;
+        const r = c.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - 0.5) * -6;
+        const ry = ((e.clientX - r.left) / r.width - 0.5) * 6;
+        c.style.transform = "perspective(800px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg)";
+      },
+      tiltReset: (e) => {
+        e.currentTarget.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+      },
+      glareMove: (e) => {
+        if (!this._pointerFine) return;
+        const c = e.currentTarget;
+        const g = c.querySelector("[data-glare]");
+        if (!g) return;
+        const r = c.getBoundingClientRect();
+        g.style.background = "radial-gradient(420px circle at " + (e.clientX - r.left) + "px " + (e.clientY - r.top) + "px, rgba(255,255,255,0.14), transparent 65%)";
+        g.style.opacity = "1";
+      },
+      glareLeave: (e) => {
+        const g = e.currentTarget.querySelector("[data-glare]");
+        if (g) g.style.opacity = "0";
+      },
+
+      mostrarEquipoVal: mostrarEquipoVal,
+
+      formExito: s.formEstado === "exito",
+      formPendiente: s.formEstado !== "exito",
+      formEnviando: s.formEstado === "enviando",
+      botonLabel: s.formEstado === "enviando" ? "Enviando…" : "Enviar solicitud →",
+      errNombre: s.errores.nombre || "",
+      errTelefono: s.errores.telefono || "",
+      errEmail: s.errores.email || "",
+      errObjetivo: s.errores.objetivo || "",
+      errRgpd: s.errores.rgpd || "",
+      rgpdChecked: s.rgpd,
+      toggleRgpd: (e) => this.setState({ rgpd: e.target.checked }),
+      enviarFormulario: (e) => {
+        e.preventDefault();
+        if (s.formEstado === "enviando") return;
+        const form = e.target;
+        const errs = this._validar(form);
+        if (errs === null) return;
+        this.setState({ errores: errs });
+        if (Object.keys(errs).length > 0) return;
+        this.setState({ formEstado: "enviando" });
+        this._formTimer = setTimeout(() => this.setState({ formEstado: "exito" }), 1200);
+      },
+
+      cookieVisible: cookieVisible,
+      aceptarCookies: () => {
+        try { localStorage.setItem("muv-cookies-consent", "aceptadas"); } catch (e) {}
+        this.setState({ cookieChoice: "aceptadas" });
+      },
+      rechazarCookies: () => {
+        try { localStorage.setItem("muv-cookies-consent", "rechazadas"); } catch (e) {}
+        this.setState({ cookieChoice: "rechazadas" });
+      },
+
+      anio: new Date().getFullYear()
+    };
+  }
+}
+</script>
+</body>
+</html>
